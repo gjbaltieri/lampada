@@ -12,8 +12,9 @@ function apagarLampada() {
     lampadaQuebrada.style.display = "none"
     lampadaAcesa.style.display = "none"
     lampadaApagada.style.display = "block"
-    document.body.style.background = "black"
-
+    document.body.style.background = "rgb(34, 34, 34)"
+    apagar.style.background = "#da3f28"
+    acender.style.background = "#333C83"
 };
 
 /***************************************************************/
@@ -23,6 +24,9 @@ function acenderLampada () {
     lampadaQuebrada.style.display = "none"
     lampadaApagada.style.display = "none"
     lampadaAcesa.style.display = "block"
+    acender.style.background = "#da3f28"
+    apagar.style.background = "#333C83"
+
     document.body.style.background = "rgb(255,251,160)"
 
     
@@ -36,5 +40,7 @@ function quebrar () {
     lampadaQuebrada.style.display = "block"
     lampadaApagada.style.display = "none"
     lampadaAcesa.style.display = "none"
-    document.body.style.background = "black"
+    apagar.style.background = "#333C83"
+    acender.style.background = "#333C83"
+    document.body.style.background = "rgb(34, 34, 34)"
 }
