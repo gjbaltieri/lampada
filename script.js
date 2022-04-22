@@ -1,46 +1,67 @@
 let apagar = document.getElementById("apagar");
 let acender = document.getElementById("acender");
-let lampadaQuebrada = document.getElementById("lampadaQuebrada");
-let lampadaApagada = document.getElementById("lampadaApagada");
-let lampadaAcesa = document.getElementById("lampadaAcesa");
+let lampada = document.getElementById("lampada");
 let container = document.getElementById("container")
 
 
-/***************************************************************/
+/***************************LAMPADA APAGADA***************************/
 apagar.addEventListener("click", apagarLampada);
 function apagarLampada() {
-    lampadaQuebrada.style.display = "none"
-    lampadaAcesa.style.display = "none"
-    lampadaApagada.style.display = "block"
-    document.body.style.background = "rgb(34, 34, 34)"
+    if (!lampadaQuebrada()) {
+    lampada.src = "./apagada.png"
     apagar.style.background = "#da3f28"
     acender.style.background = "#333C83"
+    document.body.style.background = "rgb(34, 34, 34)"
+    document.body.style.animation = ""}
 };
 
-/***************************************************************/
+/***************************LAMPADA ACESA***************************/
+
 acender.addEventListener("click", acenderLampada);
 
 function acenderLampada () {
-    lampadaQuebrada.style.display = "none"
-    lampadaApagada.style.display = "none"
-    lampadaAcesa.style.display = "block"
+    if (!lampadaQuebrada()) {
+    lampada.src = "./acesa.png"
     acender.style.background = "#da3f28"
     apagar.style.background = "#333C83"
+    document.body.style.animation = "bgAceso 2s linear 0ms 1 normal forwards"
+    } 
+};
 
-    document.body.style.background = "rgb(255,251,160)"
+/***************************LAMPADA QUEBRADA***************************/
 
-    
-    
-}
-
-/***************************************************************/
-
-container.addEventListener("click", quebrar)
+lampada.addEventListener("dblclick", quebrar)
 function quebrar () {
-    lampadaQuebrada.style.display = "block"
-    lampadaApagada.style.display = "none"
-    lampadaAcesa.style.display = "none"
+
+    lampada.src = "./quebrada.png"
     apagar.style.background = "#333C83"
     acender.style.background = "#333C83"
     document.body.style.background = "rgb(34, 34, 34)"
+    document.body.style.animation = ""
+
+};
+
+/***************************MOUSE OVER***************************/
+
+lampada.addEventListener("mouseover", function () {
+    if (!lampadaQuebrada()) {
+    lampada.src = "./acesa.png";
+    document.body.style.animation = "bgAceso 2s linear 0ms 1 normal forwards"}
+    acender.style.background = "#333C83"
+    apagar.style.background = "#333C83"
+})
+
+/***************************MOUSE OUT***************************/
+
+function lampadaQuebrada () {
+    return lampada.src.indexOf ('quebrada') > -1
 }
+
+lampada.addEventListener ("mouseout", function () {
+    if (!lampadaQuebrada())
+        lampada.src="./apagada.png"
+        document.body.style.animation = ""
+
+})
+
+
